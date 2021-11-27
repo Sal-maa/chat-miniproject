@@ -3,10 +3,7 @@ package repository
 import (
 	"chat-miniproject/config"
 	"chat-miniproject/contract"
-	"errors"
 	"fmt"
-
-	"gorm.io/gorm"
 )
 
 func FindAll() ([]contract.Users, error) {
@@ -64,31 +61,7 @@ func ChatRoom() ([]contract.Chat, error) {
 	}
 
 	list = append(list, newChat)
-
-	// for _, v := range list {
-	// 	// list := append(list,newChat)
-	// 	if v.Text!=nil{
-	// 		list := append(list,newChat)
-	// 	}else{
-	// 		fmt.Printf("There is no chat in this room")
-	// 	}
-	// }
 	return list, nil
-}
-
-func FindById(id int) (contract.Users, error) {
-	var user contract.Users
-
-	db, err := config.GormDatabaseConn()
-
-	if err != nil {
-		return contract.Users{}, err
-	}
-
-	errorNotFound := db.First(&user, id).Error
-	errors.Is(errorNotFound, gorm.ErrRecordNotFound)
-
-	return user, errorNotFound
 }
 
 func Save(user contract.Users) (contract.Users, error) {

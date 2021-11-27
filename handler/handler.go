@@ -71,11 +71,6 @@ func ReadNewText(ctx *fiber.Ctx) error {
 }
 
 func GetChatRoom(ctx *fiber.Ctx) error {
-	// Id, errParseId := strconv.Atoi(ctx.Params("id"))
-	// if errParseId != nil {
-	// 	return errParseId
-	// }
-
 	var name string
 
 	user, err := service.ChatRoom(name)

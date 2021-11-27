@@ -54,12 +54,3 @@ func ChatRoom(name string) ([]contract.Chat, error) {
 
 	return result, nil
 }
-
-func FindById(id int) (contract.Users, error) {
-	result, err := repository.FindById(id)
-	if err != nil {
-		return contract.Users{}, err
-	}
-
-	return result, nil
-}
